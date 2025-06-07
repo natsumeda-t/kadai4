@@ -58,6 +58,7 @@ run_test "小数 (1.5と2)"            $ERR_NOT_NATURAL "" 1.5 2
 run_test "負数 (-2と4)"             $ERR_NOT_NATURAL "" -2 4
 run_test "文字列 (abcと10)"         $ERR_NOT_NATURAL "" abc 10
 run_test "全角数字 (１と２)"        $ERR_NOT_NATURAL "" １ ２
+run_test "0から始まる"              $ERR_NOT_NATURAL "" 00 01
 run_test "怪しそうな文字1"          $ERR_NOT_NATURAL "" "\\" "!"
 run_test "怪しそうな文字2"          $ERR_NOT_NATURAL "" "*" "$"
 run_test "最大値超え1"              $ERR_TOO_LARGE "" 9223372036854775808 1
