@@ -21,17 +21,17 @@ ERR_NOT_NATURAL=2
 ERR_TOO_LARGE=3
 
 if [ $# -ne 2 ]; then
-    echo "Error: 2つの自然数を引数として指定してください"
+    echo "Error: 2つの自然数を引数として指定してください" >&2
     exit $ERR_INVALID_ARGC
 fi
 
 if ! is_natural_number "$1" || ! is_natural_number "$2"; then
-    echo "Error: 引数には自然数(半角数字を指定してください"
+    echo "Error: 引数には自然数(半角数字を指定してください)" >&2
     exit $ERR_NOT_NATURAL
 fi
 
 if exceeds_int64_max "$1" || exceeds_int64_max "$2"; then
-    echo "Error: 数値が大きすぎます(最大9223372036854775807)"
+    echo "Error: 数値が大きすぎます(最大9223372036854775807)" >&2
     exit $ERR_TOO_LARGE
 fi
 
