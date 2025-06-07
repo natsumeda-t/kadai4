@@ -3,7 +3,12 @@
 MAX_INT="9223372036854775807"
 
 is_natural_number() {
+    local old_lc="$LC_ALL"
+    LC_ALL=C
     [[ "$1" =~ ^0$ || "$1" =~ ^[1-9][0-9]*$ ]]
+    local result=$?
+    LC_ALL="$old_lc"
+    return $result
 }
 
 exceeds_int64_max() {
@@ -21,7 +26,7 @@ if [ $# -ne 2 ]; then
 fi
 
 if ! is_natural_number "$1" || ! is_natural_number "$2"; then
-    echo "Error: 引数には自然数(半角数字)を指定してください"
+    echo "Error: 引数には自然数(半角数字を指定してください"
     exit $ERR_NOT_NATURAL
 fi
 
